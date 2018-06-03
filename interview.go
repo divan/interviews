@@ -43,8 +43,11 @@ func NewInterviewFromFile(file string) (*Interview, error) {
 		str := scanner.Text()
 		if strings.HasPrefix(str, "1. ") {
 			question = strings.TrimPrefix(str, "1. ")
+			question = strings.TrimSpace(question)
 		} else if strings.HasPrefix(str, "  ") {
-			ret.Questions[question] += str
+			answer := strings.TrimSpace(str)
+			answer = answer[3:]
+			ret.Questions[question] += answer
 		}
 	}
 	if err := scanner.Err(); err != nil {
