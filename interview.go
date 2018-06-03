@@ -47,7 +47,7 @@ func NewInterviewFromFile(file string) (*Interview, error) {
 		} else if strings.HasPrefix(str, "  ") {
 			answer := strings.TrimSpace(str)
 			answer = answer[3:]
-			ret.Questions[question] += answer
+			ret.Questions[question] += answer + "\n"
 		}
 	}
 	if err := scanner.Err(); err != nil {
